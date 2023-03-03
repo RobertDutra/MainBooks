@@ -1,0 +1,36 @@
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div th:if="${mensagem}" th:text="${mensagem}"></div>
+  <form action="/book/form/save" method="POST">
+
+    <div th:if="${book}">
+      <input type="hidden" readonly id="id" name="id" th:value="${book?.id}"           />
+    </div>
+
+
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Titúlo:</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" th:value="${book?.titulo}">
+      <div id="nameHelp" class="form-text">Titúlo do livro.</div>
+    </div>
+    <div class="mb-3">
+      <label for="nomeAutor" class="form-label">Nome do Autor:</label>
+      <input type="text" class="form-control" id="nomeAutor" name="nomeAutor" th:value="${book?.nomeAutor}">
+    </div>
+    <div class="mb-3">
+      <label for="numeroDoLivro" class="form-label">ISBN (número do livro):</label>
+      <input type="number" class="form-control" id="numeroDoLivro" name="numeroDoLivro" th:value="${book?.numeroDoLivro}">
+    </div>
+    <div class="mb-3">
+      <label for="editora" class="form-label">Editora:</label>
+      <input type="text" class="form-control" id="editora" name="editora" th:value="${book?.editora}">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastra Livro</button>
+  </form>
+
+</body>
